@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScamShield — Protect yourself before you click</title>
+  <meta name="description" content="Analyze suspicious messages and links for common scam patterns. Risk scoring, red flags, and plain-language advice." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">🛡️ <span>ScamShield</span></div>
+      <p class="tagline">Protect yourself before you click.</p>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="message">🔍 Message</button>
+      <button class="tab" data-tab="link">🔗 Link</button>
+      <button class="tab" data-tab="history">📊 History</button>
+      <button class="tab" data-tab="learn">📚 Learn</button>
+    </div>
+
+    <!-- ========== MESSAGE SCANNER ========== -->
+    <div id="panel-message" class="panel">
+      <div class="card">
+        <h2>Paste suspicious message</h2>
+        <textarea id="messageInput" placeholder="Paste the SMS, WhatsApp, email or chat message here...
+
+Examples:
+• You won ₹10 lakh. Pay ₹500 to claim.
+• Work from home, earn ₹50,000/day. Registration fee ₹2000.
+• Your bank account will be blocked. Click to verify KYC.
+• Your parcel could not be delivered. Pay ₹25 to reschedule."></textarea>
+        <button class="btn btn-primary" id="analyzeMsgBtn">🔍 Analyze Message</button>
+      </div>
+
+      <div class="card result" id="messageResult">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- ========== LINK SCANNER ========== -->
+    <div id="panel-link" class="panel hidden">
+      <div class="card">
+        <h2>Scan a suspicious link</h2>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;">
+          We only analyze the URL text. We never open or visit the link.
+        </p>
+        <input type="url" id="linkInput" placeholder="https://example-suspicious-site.com/login" />
+        <button class="btn btn-primary" id="analyzeLinkBtn">🔗 Analyze Link</button>
+      </div>
+
+      <div class="card result" id="linkResult">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- ========== HISTORY ========== -->
+    <div id="panel-history" class="panel hidden">
+      <div class="card">
+        <h2>Your Scan Stats</h2>
+        <div class="stats" id="stats">
+          <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Total</div></div>
+          <div class="stat"><div class="num" style="color:var(--red)" id="statHigh">0</div><div class="label">High Risk</div></div>
+          <div class="stat"><div class="num" style="color:var(--orange)" id="statMedium">0</div><div class="label">Medium</div></div>
+          <div class="stat"><div class="num" style="color:var(--green)" id="statLow">0</div><div class="label">Low Risk</div></div>
+        </div>
+
+        <h2 style="margin-top:1.5rem;">Recent Scans</h2>
+        <div class="history-list" id="historyList">
+          <p style="color:var(--text-muted);padding:1rem 0;">No scans yet. Analyze a message or link to start.</p>
+        </div>
+        <button class="btn btn-primary" id="clearHistoryBtn" style="margin-top:1rem;background:#374151;">Clear History</button>
+      </div>
+    </div>
+
+    <!-- ========== LEARN ========== -->
+    <div id="panel-learn" class="panel hidden">
+      <div class="card">
+        <h2>📚 Learn to recognize common scams</h2>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <h3>💰 Fake Prize / Lottery</h3>
+            <p>Unexpected big reward + “pay a small fee / tax / processing charge to claim”. Real prizes never ask you to pay first.</p>
+          </div>
+          <div class="edu-card">
+            <h3>💼 Fake Job Offers</h3>
+            <p>Very high salary for little work + registration / training / kit fee. Legitimate employers never ask candidates to pay.</p>
+          </div>
+          <div class="edu-card">
+            <h3>🏦 Fake Bank / KYC</h3>
+            <p>“Account will be blocked today – verify KYC now” + external link. Banks never ask for OTP, PIN or password via SMS/link.</p>
+          </div>
+          <div class="edu-card">
+            <h3>📦 Fake Delivery</h3>
+            <p>Unexpected parcel + small payment (₹1–₹50) to “reschedule / release”. Real couriers don’t demand payment via random links.</p>
+          </div>
+          <div class="edu-card">
+            <h3>❤️ Romance / Emergency Money</h3>
+            <p>Fast emotional connection + sudden emergency + urgent request for money. Never send money to someone you only know online.</p>
+          </div>
+          <div class="edu-card">
+            <h3>🔗 Phishing Links</h3>
+            <p>Lookalike domains (paypa1.com, bankofindia-secure.in), missing HTTPS, or strange paths. Always type the official address yourself.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p><strong>Important:</strong> ScamShield gives a risk assessment, not absolute certainty.</p>
+      <p>Always verify through official apps, websites or phone numbers. Never share OTP, PIN or send money based only on a message.</p>
+      <p style="margin-top:0.75rem;">Educational / portfolio project • Rule-based detection</p>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
